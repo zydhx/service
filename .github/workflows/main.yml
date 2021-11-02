@@ -11,14 +11,14 @@ jobs:
           dotnet-version: 3.1.414
       - name: Run with dotnet
         shell: bash
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git clone https://${{ secrets.GH_TOKEN }}@github.com/ciyuanhuixing/ToDoEmailNotification.git
           dotnet run -p ToDoEmailNotification/ToDoEmailNotification
-          git clone https://github.com/zydhx/service.git
+          git clone https://${{ secrets.GH_TOKEN1 }}@github.com/zydhx/service.git
           cd service
           echo `date +"%Y-%m-%d %H:%M:%S"` >> 1.txt
+          git config --global user.email "zydhx3@qq.com"
+          git config --global user.name "Your zydhx"
           git add -A
           git commit -m "1"
           git push
