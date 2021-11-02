@@ -1,8 +1,5 @@
 name: ci 
-on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '*/5 * * * *'
+on: push
 jobs:
   deploy:
     runs-on: windows-latest
