@@ -1,0 +1,26 @@
+name: ci 
+on:push
+jobs:
+  deploy:
+    runs-on: windows-latest
+    steps:
+      # - uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.414
+      - name: Run with dotnet
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          git clone https://${{ secrets.GH_TOKEN }}@github.com/ciyuanhuixing/ToDoEmailNotification.git
+          dotnet run -p ToDoEmailNotification/ToDoEmailNotification
+          git clone https://github.com/zydhx/service.git
+          cd service
+          echo `date +"%Y-%m-%d %H:%M:%S"` >> 1.txt
+          git add -A
+          git commit -m "1"
+          git push
+
+
