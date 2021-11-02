@@ -20,7 +20,7 @@ jobs:
           git config --global user.email "zydhx3@qq.com"
           git config --global user.name "Your zydhx"
           git add -A
-          git commit -m "1"
+          git commit -m "`date +"%Y-%m-%d %H:%M:%S"`"
           git push
 
 
